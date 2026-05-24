@@ -332,7 +332,7 @@ function ProcedureDrawer({ procedure, onClose, onSave, isSaving, teamMembers }: 
   )
 }
 
-export default function AuditProgram() {
+export function AuditProgramPage() {
   const { currentEngagementId, currentEngagement } = useEngagementStore()
   const queryClient = useQueryClient()
 

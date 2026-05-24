@@ -20,7 +20,7 @@ interface LoginResponse {
   user: User
 }
 
-export function Login() {
+export function LoginPage() {
   const navigate = useNavigate()
   const { setAuth } = useAuthStore()
   const [showPwd, setShowPwd] = useState(false)
@@ -188,4 +188,4 @@ export function Login() {
   )
 }
 
-export default Login
+export default LoginPage

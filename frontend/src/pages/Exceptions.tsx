@@ -30,7 +30,7 @@ type FormData = z.infer<typeof schema>
 
 const NATURES = ['Credit Risk', 'NPA Classification', 'ECL Provisioning', 'KYC Non-Compliance', 'RPT Disclosure', 'Income Recognition', 'Control Deficiency', 'Data Quality', 'Regulatory Non-Compliance', 'Other']
 
-export default function Exceptions() {
+export function ExceptionsPage() {
   const { currentEngagementId } = useEngagementStore()
   const queryClient = useQueryClient()
   const [showModal, setShowModal] = useState(false)

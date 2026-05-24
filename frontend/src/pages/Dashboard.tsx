@@ -26,7 +26,7 @@ const PHASE_COLORS: Record<Phase, string> = {
   completion: '#10b981',
 }
 
-export default function Dashboard() {
+export function DashboardPage() {
   const { currentEngagementId, currentEngagement } = useEngagementStore()
   const { events } = useWSStore()
 
