@@ -21,17 +21,18 @@ class AnalyticsEngine:
         self._register_functions()
 
     def _register_functions(self):
-        """Register all DA functions"""
-        # DA-001: LMS-GL Reconciliation
-        from . import da
-        self.da_functions = {
-            "DA-001": da.da_001_lms_gl_recon,
-            "DA-002": da.da_002_los_lms_recon,
-            "DA-003": da.da_003_duplicate_loans,
-            "DA-004": da.da_004_rate_override,
-            "DA-005": da.da_005_segment_variance,
-            # ... Add all 50 DAs
-        }
+        """Register all DA functions dynamically"""
+        import importlib
+        self.da_functions = {}
+        for i in range(1, 51):
+            da_num = f"{i:03d}"
+            try:
+                module = importlib.import_module(f".da.da_{da_num}", package="analytics")
+                da_ref = f"DA-{da_num}"
+                self.da_functions[da_ref] = module.run
+                logger.info(f"Registered {da_ref}")
+            except ImportError as e:
+                logger.warning(f"Failed to load DA-{da_num}: {str(e)}")
 
     async def run_analytics(
         self,
